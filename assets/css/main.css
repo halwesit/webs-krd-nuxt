@@ -1,0 +1,159 @@
+/* Main stylesheet for our Kurdish RTL website
+   This file establishes the foundation for right-to-left layout and Kurdish typography */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles for RTL layout and Kurdish typography */
+@layer base {
+    /* Set the root HTML element for RTL direction */
+    html {
+        direction: rtl;
+        text-align: right;
+    }
+
+    /* Kurdish font family applied to all text elements */
+    body {
+        font-family: "Noto Sans Arabic", "Segoe UI", Tahoma, Arial, sans-serif;
+        font-feature-settings:
+            "kern" 1,
+            "liga" 1;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Ensure proper line height for Kurdish text readability */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        line-height: 1.4;
+        font-weight: 600;
+    }
+
+    /* Paragraph spacing optimized for Kurdish text */
+    p {
+        line-height: 1.7;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Component-level styles for common UI patterns */
+@layer components {
+    /* Navigation styles adapted for RTL layout */
+    .nav-link {
+        @apply px-4 py-2 rounded-lg transition-all duration-300 hover:bg-gray-100;
+    }
+
+    /* Button styles with RTL-aware spacing */
+    .btn-primary {
+        @apply bg-black text-white px-6 py-3 rounded-full font-medium transition-all duration-300 hover:bg-gray-800;
+    }
+
+    .btn-secondary {
+        @apply border border-gray-300 text-gray-700 px-6 py-3 rounded-full font-medium transition-all duration-300 hover:bg-gray-50;
+    }
+
+    /* Card component for portfolio items */
+    .portfolio-card {
+        @apply bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1;
+    }
+
+    /* Hero section styling */
+    .hero-title {
+        @apply text-4xl md:text-6xl font-bold leading-tight mb-6;
+    }
+
+    .hero-subtitle {
+        @apply text-lg md:text-xl text-gray-600 leading-relaxed mb-8;
+    }
+
+    /* Section headings with proper RTL alignment */
+    .section-title {
+        @apply text-3xl md:text-4xl font-bold text-center mb-4;
+    }
+
+    .section-subtitle {
+        @apply text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto;
+    }
+}
+
+/* Utility classes for RTL-specific adjustments */
+@layer utilities {
+    /* Reverse flex direction for RTL layout */
+    .flex-rtl {
+        flex-direction: row-reverse;
+    }
+
+    /* Text alignment utilities for RTL */
+    .text-start {
+        text-align: right;
+    }
+
+    .text-end {
+        text-align: left;
+    }
+
+    /* Margin and padding utilities for RTL */
+    .mr-rtl {
+        margin-left: 1rem;
+        margin-right: 0;
+    }
+
+    .ml-rtl {
+        margin-right: 1rem;
+        margin-left: 0;
+    }
+
+    /* Grid gap adjustments for RTL layout */
+    .grid-rtl {
+        direction: rtl;
+    }
+}
+
+/* Custom animations for smooth interactions */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Animation classes */
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out forwards;
+}
+
+/* Responsive typography scaling */
+@media (max-width: 768px) {
+    .hero-title {
+        @apply text-3xl;
+    }
+
+    .section-title {
+        @apply text-2xl;
+    }
+}
